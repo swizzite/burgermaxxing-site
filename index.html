@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burgermaxxing — Find the best burger. Make gluten-free buns impossible to ignore.</title>
+<meta name="description" content="Burgermaxxing ranks the best burgers in Georgetown / Washington DC — and runs the only honest gluten-free bun map worth trusting. Launching July 1, 2026.">
+<!-- Open Graph (for nice link previews on social) -->
+<meta property="og:title" content="Burgermaxxing — the best burgers in Georgetown, ranked">
+<meta property="og:description" content="Honest burger rankings + the gluten-free bun map you've been begging for. Launching July 1 in Georgetown, DC.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --navy:#1F3A5F; --blue:#2E75B6; --gold:#C8923B; --ketchup:#C0392B;
+    --ink:#1c2733; --paper:#FFFDF8; --cream:#F6EFE2; --muted:#6b7785;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  a{color:var(--blue);text-decoration:none}
+
+  /* Header */
+  header{padding:20px 0;border-bottom:1px solid #eee2cc;position:sticky;top:0;background:rgba(255,253,248,.92);backdrop-filter:blur(6px);z-index:20}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:1.35rem;letter-spacing:-.5px;color:var(--navy)}
+  .logo span{color:var(--gold)}
+  .nav a{color:var(--ink);font-weight:600;font-size:.92rem;margin-left:20px}
+  .nav a:hover{color:var(--ketchup)}
+  @media(max-width:620px){.nav{display:none}}
+
+  /* Hero */
+  .hero{padding:70px 0 56px;text-align:center;background:
+    radial-gradient(1200px 400px at 50% -120px, #fff4dd 0%, transparent 70%);}
+  .badge{display:inline-block;background:var(--navy);color:#fff;font-weight:700;
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:22px}
+  h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.02;letter-spacing:-1.5px;color:var(--navy);font-weight:800}
+  h1 em{font-style:normal;color:var(--gold)}
+  .tagline{font-size:clamp(1.05rem,2.4vw,1.4rem);color:var(--ink);margin:20px auto 0;max-width:680px;font-weight:500}
+  .sub{color:var(--muted);margin-top:14px;font-size:1rem}
+
+  /* Signup */
+  .signup{margin:34px auto 8px;max-width:480px}
+  .signup form{display:flex;gap:10px}
+  .signup input[type=email]{flex:1;padding:15px 16px;font-size:1rem;border:2px solid #e3d8bf;border-radius:12px;background:#fff}
+  .signup input[type=email]:focus{outline:none;border-color:var(--gold)}
+  .btn{cursor:pointer;border:none;background:var(--ketchup);color:#fff;font-weight:700;font-size:1rem;
+    padding:15px 22px;border-radius:12px;transition:transform .08s ease,background .15s}
+  .btn:hover{background:#a5311f;transform:translateY(-1px)}
+  .signup small{display:block;color:var(--muted);margin-top:10px;font-size:.82rem}
+  #thanks{display:none;margin-top:16px;background:#e7f3e7;color:#1d6b2e;border:1px solid #bfe0bf;
+    padding:14px 16px;border-radius:12px;font-weight:600}
+  @media(max-width:520px){.signup form{flex-direction:column}}
+
+  /* Sections */
+  section.block{padding:62px 0;border-top:1px solid #eee2cc}
+  h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--navy);letter-spacing:-.6px;text-align:center}
+  .lead{text-align:center;color:var(--muted);max-width:640px;margin:14px auto 0}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px}
+  .card{background:#fff;border:1px solid #ece0c6;border-radius:16px;padding:26px 22px}
+  .card .ic{font-size:1.7rem}
+  .card h3{margin:12px 0 8px;color:var(--navy);font-size:1.12rem}
+  .card p{color:var(--muted);font-size:.95rem}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+
+  /* GF highlight */
+  .gf{background:var(--navy);color:#fff;border-radius:22px;padding:46px 34px;margin-top:8px;text-align:center}
+  .gf h2{color:#fff}
+  .gf p{color:#d7e2f0;max-width:660px;margin:14px auto 0}
+  .gf .pill{display:inline-block;margin-top:22px;background:var(--gold);color:#2a2208;font-weight:700;padding:11px 18px;border-radius:999px}
+
+  /* Restaurants / sponsors */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+  .panel{border:2px solid #ece0c6;border-radius:16px;padding:28px 24px;background:#fff}
+  .panel h3{color:var(--navy);font-size:1.2rem}
+  .panel p{color:var(--muted);margin:10px 0 16px}
+  .panel a.cta{display:inline-block;font-weight:700;color:#fff;background:var(--navy);padding:11px 18px;border-radius:10px}
+  .panel a.cta:hover{background:#16293f}
+  @media(max-width:760px){.split{grid-template-columns:1fr}}
+
+  /* Footer */
+  footer{padding:46px 0 60px;border-top:1px solid #eee2cc;color:var(--muted);font-size:.86rem;text-align:center}
+  .disc{max-width:760px;margin:0 auto 18px;font-size:.8rem;line-height:1.5}
+  footer strong{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo">Burger<span>maxxing</span></div>
+    <nav class="nav">
+      <a href="#how">How it works</a>
+      <a href="#gf">Gluten-free</a>
+      <a href="#partners">Restaurants</a>
+      <a href="#signup">Get early access</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">🍔 Launching July 1 · Georgetown, DC</span>
+    <h1>Find the best burger.<br>Make <em>gluten-free buns</em><br>impossible to ignore.</h1>
+    <p class="tagline">We eat the burgers so you don't waste a meal — honest rankings, real opinions, and the only gluten-free bun map worth trusting.</p>
+    <p class="sub">Georgetown first. Your neighborhood next.</p>
+
+    <div class="signup" id="signup">
+      <!-- SETUP: replace YOUR_FORM_ID with your Formspree form ID (formspree.io, free) -->
+      <form id="waitlist" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
+        <button class="btn" type="submit">Get early access</button>
+      </form>
+      <div id="thanks">🎉 You're on the list. We'll send the first rankings before launch.</div>
+      <small>Be first to see the Georgetown leaderboard + the gluten-free bun map. No spam, ever.</small>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="block" id="how">
+  <div class="wrap">
+    <h2>Not a food blog. A burger authority.</h2>
+    <p class="lead">Every burger gets scored on one consistent 100-point system — across delivery and in-person, lunch, dinner, and late-night. So a ranking actually means something.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">🏆</div>
+        <h3>Honest rankings</h3>
+        <p>Best burgers, best smash, best value, best late-night — by neighborhood, scored the same way every time.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🛵</div>
+        <h3>Delivery, tested</h3>
+        <p>We order on UberEats and grade what actually survives the trip — temperature, sog, durability, the works.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🍞</div>
+        <h3>Gluten-free bun map</h3>
+        <p>Who actually offers a good GF bun — rated for taste, texture, and whether it holds together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLUTEN FREE -->
+<section class="block" id="gf">
+  <div class="wrap">
+    <div class="gf">
+      <h2>The gluten-free bun map you've been begging for</h2>
+      <p>Finding a restaurant with a genuinely good gluten-free bun is painful, and the info is scattered and unreliable. We fix that — with honest ratings and clear labels for what each spot offers. We rate taste and structure and report what restaurants tell us; we never claim a kitchen is celiac-safe.</p>
+      <span class="pill">Always confirm prep with the restaurant 🍞</span>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="block" id="partners">
+  <div class="wrap">
+    <h2>Run a restaurant? Want to sponsor?</h2>
+    <p class="lead">Get in front of hungry locals and visitors actively searching for their next burger.</p>
+    <div class="split">
+      <div class="panel">
+        <h3>🍴 Restaurants</h3>
+        <p>Get featured, get found, and earn a “Ranked on Burgermaxxing” badge. Our rankings are independent and never for sale — but visibility around them is.</p>
+        <a class="cta" href="#signup">Get featured →</a>
+      </div>
+      <div class="panel">
+        <h3>📣 Sponsors &amp; GF brands</h3>
+        <p>Reach a loyal, high-intent local food audience — including a gluten-free crowd that's hard to find anywhere else. Clearly disclosed, always.</p>
+        <a class="cta" href="#signup">Partner with us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p class="disc">
+      <strong>Gluten-free note:</strong> Burgermaxxing rates gluten-free buns for taste, texture, and structure and reports what restaurants tell us. We are not a medical authority and do not certify any food as celiac-safe or free of cross-contamination. “Offers a gluten-free bun” is not the same as “safe for people with celiac disease.” If you have celiac disease or a gluten allergy, always confirm directly with the restaurant before ordering.
+    </p>
+    <p>© 2026 Burgermaxxing · Georgetown / Washington, DC · <a href="#signup">Get early access</a></p>
+  </div>
+</footer>
+
+<script>
+  // Show a friendly thank-you and submit in the background (no page redirect).
+  var form = document.getElementById('waitlist');
+  form.addEventListener('submit', function(e){
+    var action = form.getAttribute('action') || '';
+    // If Formspree isn't configured yet, just show the thank-you so the page still feels live.
+    if(action.indexOf('YOUR_FORM_ID') !== -1){
+      e.preventDefault();
+      document.getElementById('thanks').style.display = 'block';
+      form.style.display = 'none';
+      return;
+    }
+    // Configured: post via fetch, keep the user on the page.
+    e.preventDefault();
+    fetch(action, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+      .then(function(){ form.style.display='none'; document.getElementById('thanks').style.display='block'; })
+      .catch(function(){ form.submit(); });
+  });
+</script>
+</body>
+</html>
